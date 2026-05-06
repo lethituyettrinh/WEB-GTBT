@@ -1,307 +1,268 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <title>Lê Thị Tuyết Trinh | Portfolio</title>
+  <title>Lê Thị Tuyết Trinh | Website Giới Thiệu Bản Thân</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap 5 CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 3.4.1 CDN giống mẫu Bootstrap/W3Schools -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  <!-- CSS tùy chỉnh dựa trên bố cục template Blog/Portfolio của W3Schools -->
   <style>
-    :root {
-      --main-color: #4f46e5;
-      --accent-color: #0ea5e9;
-      --dark-color: #111827;
-      --soft-color: #f5f7fb;
-      --text-color: #243044;
-      --muted-color: #667085;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* Reset khoảng cách mặc định của navbar giống template Bootstrap */
     body {
-      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--text-color);
+      color: #263238;
       background-color: #ffffff;
     }
 
     section {
-      padding: 70px 0;
+      padding: 60px 0;
     }
 
-    /* Navbar: bỏ margin mặc định và dùng màu tối giống template mẫu */
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
-      background-color: var(--dark-color);
+      border: none;
     }
 
-    .navbar-brand {
-      font-weight: 700;
-      color: #ffffff !important;
+    .navbar-inverse {
+      background-color: #2d235f;
     }
 
-    .nav-link {
-      color: #e5e7eb !important;
-      font-weight: 500;
-      transition: color 0.2s ease, background-color 0.2s ease;
+    .navbar-inverse .navbar-brand,
+    .navbar-inverse .navbar-nav > li > a {
+      color: #ffffff;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-      color: #ffffff !important;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-radius: 6px;
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    .navbar-inverse .navbar-nav > li > a:hover {
+      background-color: #5b4ee6;
+      color: #ffffff;
     }
 
-    /* Carousel: dùng làm hero section */
-    .carousel-item {
-      height: 520px;
-      background-color: #000000;
-    }
-
-    .carousel-item img.slide-bg {
+    /* Carousel đầu trang */
+    .carousel-inner > .item > img {
       width: 100%;
-      height: 520px;
+      height: 430px;
+      margin: auto;
       object-fit: cover;
-      opacity: 0.48;
+      filter: brightness(55%);
     }
 
     .carousel-caption {
-      bottom: 70px;
+      bottom: 55px;
     }
 
     .avatar {
-      width: 170px;
-      height: 170px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       border-radius: 50%;
-      border: 6px solid #ffffff;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
-      margin-bottom: 18px;
+      border: 5px solid #ffffff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      margin-bottom: 15px;
     }
 
-    .hero-title {
-      font-size: clamp(2rem, 5vw, 4rem);
-      font-weight: 800;
-      letter-spacing: 0;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-    }
-
-    .hero-text {
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 1.18rem;
-      color: #eef2ff;
+    .carousel-caption h1,
+    .carousel-caption h2 {
+      font-weight: bold;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
     }
 
     .section-title {
-      margin-bottom: 36px;
-      font-weight: 800;
-      color: var(--main-color);
+      color: #4f46e5;
+      font-weight: bold;
+      margin-bottom: 35px;
     }
 
-    .bg-soft {
-      background-color: var(--soft-color);
+    .bg-light-blue {
+      background-color: #f3f6ff;
     }
 
-    /* Card và well: mở rộng hiệu ứng hover nhẹ */
-    .custom-card,
-    .well-box {
-      border: 0;
-      border-radius: 8px;
-      background-color: #ffffff;
-      box-shadow: 0 10px 28px rgba(17, 24, 39, 0.08);
-      transition: transform 0.24s ease, box-shadow 0.24s ease;
+    /* Well và thumbnail theo phong cách Bootstrap template */
+    .well,
+    .thumbnail,
+    .panel {
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .custom-card:hover,
-    .well-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 38px rgba(17, 24, 39, 0.14);
+    .well:hover,
+    .thumbnail:hover,
+    .panel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
     }
 
-    .card-img-top {
-      height: 210px;
-      object-fit: cover;
+    .thumbnail {
+      padding: 0;
+      overflow: hidden;
     }
 
-    .info-label {
-      color: var(--muted-color);
-      font-size: 0.95rem;
-      margin-bottom: 4px;
+    .thumbnail-img {
+      height: 150px;
+      background: linear-gradient(135deg, #4f46e5, #0ea5e9);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
     }
 
-    .info-value {
-      font-weight: 700;
-      margin-bottom: 18px;
+    .thumbnail .caption {
+      padding: 20px;
     }
 
-    /* Progress bar kỹ năng */
     .progress {
-      height: 14px;
-      border-radius: 999px;
-      background-color: #dce3ee;
+      height: 16px;
+      border-radius: 20px;
+      background-color: #dbe2ef;
     }
 
     .progress-bar {
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9);
     }
 
-    .btn-main {
-      color: #ffffff;
-      border: 0;
-      background: linear-gradient(90deg, var(--main-color), var(--accent-color));
-      transition: transform 0.24s ease, opacity 0.24s ease;
+    .btn-primary {
+      border: none;
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+      transition: opacity 0.25s ease;
     }
 
-    .btn-main:hover {
-      color: #ffffff;
-      opacity: 0.92;
-      transform: translateY(-2px);
+    .btn-primary:hover {
+      opacity: 0.9;
     }
 
-    .form-control:focus {
-      border-color: var(--main-color);
-      box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.16);
-    }
-
-    /* Footer: màu nhẹ theo yêu cầu xanh/tím */
+    /* Footer theo mẫu Bootstrap */
     footer {
-      padding: 25px;
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9);
       color: #ffffff;
-      background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+      padding: 25px;
     }
 
-    /* Ẩn chữ trên carousel khi màn hình nhỏ giống template mẫu */
+    /* Ẩn chữ carousel khi màn hình nhỏ giống mẫu W3Schools */
     @media (max-width: 600px) {
-      .carousel-caption {
-        bottom: 35px;
-      }
-
-      .carousel-caption .hero-text,
+      .carousel-caption p,
       .carousel-caption .btn {
         display: none;
       }
 
+      .carousel-inner > .item > img {
+        height: 330px;
+      }
+
       .avatar {
-        width: 130px;
-        height: 130px;
+        width: 120px;
+        height: 120px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Navbar: menu trên cùng -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container-fluid px-lg-4">
-      <a class="navbar-brand" href="#home">Tuyết Trinh</a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Mở menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- Navbar: lấy cấu trúc từ Bootstrap template -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#home">Tuyết Trinh</a>
+      </div>
 
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="#home">Trang chủ</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">Giới thiệu</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Trải nghiệm</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Kinh nghiệm</a></li>
-          <li class="nav-item"><a class="nav-link" href="#sharing">Chia sẻ</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Liên hệ</a></li>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#home">Trang chủ</a></li>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#experience">Trải nghiệm</a></li>
+          <li><a href="#skills">Kinh nghiệm</a></li>
+          <li><a href="#sharing">Chia sẻ</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
         </ul>
 
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Gửi liên hệ</a>
-          </li>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#contact"><span class="glyphicon glyphicon-envelope"></span> Liên hệ</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Trang chủ: carousel giống template W3Schools -->
+  <!-- Trang chủ: carousel Bootstrap -->
   <div id="home">
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      </div>
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="slide-bg" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80" alt="Không gian học lập trình">
-          <div class="carousel-caption text-center">
-            <img src="avatar.png" class="avatar" alt="Ảnh đại diện Lê Thị Tuyết Trinh">
-            <h1 class="hero-title">Lê Thị Tuyết Trinh</h1>
-            <p class="hero-text mb-4">
-              Sinh viên Công nghệ thông tin yêu thích lập trình web, thiết kế giao diện và hoạt động cộng đồng.
-            </p>
-            <a href="#about" class="btn btn-main btn-lg px-4">Xem giới thiệu</a>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="avatar.png" alt="Ảnh đại diện Lê Thị Tuyết Trinh">
+          <div class="carousel-caption">
+            <img src="avatar.png" class="avatar" alt="Avatar">
+            <h1>Lê Thị Tuyết Trinh</h1>
+            <p>Sinh viên Công nghệ thông tin yêu thích lập trình web và thiết kế giao diện.</p>
+            <a href="#about" class="btn btn-primary btn-lg">Xem giới thiệu</a>
           </div>
         </div>
 
-        <div class="carousel-item">
-          <img class="slide-bg" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80" alt="Làm việc nhóm">
-          <div class="carousel-caption text-center">
-            <h2 class="hero-title">Học tập và trải nghiệm</h2>
-            <p class="hero-text mb-4">
-              Luôn cố gắng rèn luyện kỹ năng, tham gia hoạt động tập thể và phát triển bản thân mỗi ngày.
-            </p>
-            <a href="#experience" class="btn btn-main btn-lg px-4">Xem trải nghiệm</a>
+        <div class="item">
+          <img src="avatar.png" alt="Học tập và trải nghiệm">
+          <div class="carousel-caption">
+            <h2>Học tập - Trải nghiệm - Chia sẻ</h2>
+            <p>Luôn cố gắng học hỏi, tham gia hoạt động và phát triển bản thân mỗi ngày.</p>
+            <a href="#experience" class="btn btn-primary btn-lg">Xem trải nghiệm</a>
           </div>
         </div>
       </div>
 
       <!-- Left and right controls -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-
-      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
 
-  <!-- Giới thiệu: thông tin cá nhân và mô tả bản thân -->
+  <!-- Giới thiệu: thông tin cá nhân -->
   <section id="about">
     <div class="container text-center">
       <h2 class="section-title">Giới thiệu</h2>
 
-      <div class="row g-4 text-start align-items-stretch">
-        <div class="col-md-4">
-          <div class="well-box h-100 p-4">
-            <p class="info-label">Họ tên</p>
-            <p class="info-value">Lê Thị Tuyết Trinh</p>
-
-            <p class="info-label">Tuổi</p>
-            <p class="info-value">20</p>
-
-            <p class="info-label">Ngành học</p>
-            <p class="info-value mb-0">Công nghệ thông tin</p>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="well text-left">
+            <h4><strong>Thông tin cá nhân</strong></h4>
+            <p><strong>Họ tên:</strong> Lê Thị Tuyết Trinh</p>
+            <p><strong>Tuổi:</strong> 20</p>
+            <p><strong>Ngành học:</strong> Công nghệ thông tin</p>
           </div>
         </div>
 
-        <div class="col-md-8">
-          <div class="well-box h-100 p-4">
-            <h4 class="fw-bold mb-3">Mô tả bản thân</h4>
-            <p class="fs-5 mb-3">
-              Tôi là sinh viên ngành Công nghệ thông tin, có hứng thú với lập trình web và thiết kế giao diện người dùng.
+        <div class="col-sm-8">
+          <div class="well text-left">
+            <h4><strong>Mô tả bản thân</strong></h4>
+            <p>
+              Tôi là sinh viên ngành Công nghệ thông tin, có hứng thú với lập trình web,
+              thiết kế giao diện và các hoạt động sinh viên.
             </p>
-            <p class="fs-5 mb-0">
-              Tôi mong muốn học thêm nhiều kỹ năng mới, tham gia các hoạt động thực tế và tạo ra những sản phẩm web đơn giản, đẹp mắt, dễ sử dụng.
+            <p>
+              Tôi mong muốn học thêm nhiều kỹ năng mới, rèn luyện khả năng làm việc nhóm
+              và tạo ra những sản phẩm web đơn giản, đẹp mắt, dễ sử dụng.
             </p>
           </div>
         </div>
@@ -309,144 +270,111 @@
     </div>
   </section>
 
-  <!-- Trải nghiệm: các hoạt động hiển thị dạng card Bootstrap -->
-  <section id="experience" class="bg-soft">
+  <!-- Trải nghiệm: bố cục row + col-sm-4 giống Bootstrap template -->
+  <section id="experience" class="bg-light-blue">
     <div class="container text-center">
       <h2 class="section-title">Trải nghiệm</h2>
 
-      <div class="row g-4">
+      <div class="row">
         <div class="col-sm-4">
-          <div class="card custom-card h-100 text-start">
-            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Hoạt động tình nguyện">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Mùa hè xanh</h5>
-              <p class="card-text text-secondary">
-                Tham gia hỗ trợ địa phương, tổ chức sinh hoạt thiếu nhi và góp sức vào các hoạt động cộng đồng.
-              </p>
+          <div class="thumbnail">
+            <div class="thumbnail-img">
+              <span class="glyphicon glyphicon-heart"></span>
+            </div>
+            <div class="caption">
+              <h4><strong>Mùa hè xanh</strong></h4>
+              <p>Tham gia hỗ trợ địa phương, tổ chức sinh hoạt thiếu nhi và hoạt động cộng đồng.</p>
             </div>
           </div>
         </div>
 
         <div class="col-sm-4">
-          <div class="card custom-card h-100 text-start">
-            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Hoạt động sinh viên">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Hoạt động tình nguyện</h5>
-              <p class="card-text text-secondary">
-                Tham gia các chương trình thiện nguyện, quyên góp sách vở và kết nối với nhiều bạn sinh viên.
-              </p>
+          <div class="thumbnail">
+            <div class="thumbnail-img">
+              <span class="glyphicon glyphicon-user"></span>
+            </div>
+            <div class="caption">
+              <h4><strong>Hoạt động tình nguyện</strong></h4>
+              <p>Tham gia thiện nguyện, quyên góp sách vở và hỗ trợ các chương trình sinh viên.</p>
             </div>
           </div>
         </div>
 
         <div class="col-sm-4">
-          <div class="well-box h-100 p-4 text-start">
-            <h5 class="fw-bold">Dự án học tập</h5>
-            <p class="text-secondary">
-              Xây dựng các trang web nhỏ bằng HTML, CSS, JavaScript và Bootstrap.
-            </p>
+          <div class="well text-left">
+            <h4><strong>Dự án học tập</strong></h4>
+            <p>Xây dựng các trang web nhỏ bằng HTML, CSS, JavaScript và Bootstrap.</p>
+          </div>
 
-            <hr>
-
-            <h5 class="fw-bold">Kỹ năng mềm</h5>
-            <p class="text-secondary mb-0">
-              Rèn luyện giao tiếp, quản lý thời gian và làm việc nhóm qua các hoạt động thực tế.
-            </p>
+          <div class="well text-left">
+            <h4><strong>Kỹ năng mềm</strong></h4>
+            <p>Rèn luyện giao tiếp, làm việc nhóm và quản lý thời gian.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Kinh nghiệm: kỹ năng bằng progress bar Bootstrap -->
+  <!-- Kinh nghiệm: kỹ năng với progress bar Bootstrap -->
   <section id="skills">
     <div class="container">
       <h2 class="section-title text-center">Kinh nghiệm</h2>
 
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="mb-4">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="fw-semibold">HTML</span>
-              <span>90%</span>
-            </div>
-            <div class="progress" role="progressbar" aria-label="HTML" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar" style="width: 90%;"></div>
-            </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <p><strong>HTML</strong> <span class="pull-right">90%</span></p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%"></div>
           </div>
 
-          <div class="mb-4">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="fw-semibold">CSS</span>
-              <span>85%</span>
-            </div>
-            <div class="progress" role="progressbar" aria-label="CSS" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar" style="width: 85%;"></div>
-            </div>
+          <p><strong>CSS</strong> <span class="pull-right">85%</span></p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width:85%"></div>
           </div>
 
-          <div class="mb-4">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="fw-semibold">JavaScript</span>
-              <span>70%</span>
-            </div>
-            <div class="progress" role="progressbar" aria-label="JavaScript" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar" style="width: 70%;"></div>
-            </div>
+          <p><strong>JavaScript</strong> <span class="pull-right">70%</span></p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"></div>
           </div>
 
-          <div class="mb-4">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="fw-semibold">Bootstrap 5</span>
-              <span>80%</span>
-            </div>
-            <div class="progress" role="progressbar" aria-label="Bootstrap 5" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar" style="width: 80%;"></div>
-            </div>
+          <p><strong>Bootstrap</strong> <span class="pull-right">80%</span></p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Chia sẻ: các bài viết ngắn dạng blog card -->
-  <section id="sharing" class="bg-soft">
+  <!-- Chia sẻ: blog card bằng panel Bootstrap -->
+  <section id="sharing" class="bg-light-blue">
     <div class="container text-center">
       <h2 class="section-title">Chia sẻ</h2>
 
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card custom-card h-100 text-start">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Học lập trình">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Hành trình học HTML và CSS</h5>
-              <p class="card-text text-secondary">
-                HTML và CSS là nền tảng giúp tôi hiểu cách xây dựng bố cục, màu sắc và giao diện website.
-              </p>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-default text-left">
+            <div class="panel-heading"><strong>Hành trình học HTML và CSS</strong></div>
+            <div class="panel-body">
+              HTML và CSS là nền tảng giúp tôi hiểu cách xây dựng bố cục, màu sắc và giao diện website.
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card custom-card h-100 text-start">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Làm việc nhóm">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Bài học từ làm việc nhóm</h5>
-              <p class="card-text text-secondary">
-                Làm việc nhóm giúp tôi biết lắng nghe, chia sẻ trách nhiệm và hoàn thành công việc hiệu quả.
-              </p>
+        <div class="col-sm-4">
+          <div class="panel panel-default text-left">
+            <div class="panel-heading"><strong>Bài học từ làm việc nhóm</strong></div>
+            <div class="panel-body">
+              Làm việc nhóm giúp tôi biết lắng nghe, chia sẻ trách nhiệm và hoàn thành công việc hiệu quả.
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card custom-card h-100 text-start">
-            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" class="card-img-top" alt="Hoạt động sinh viên">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Kỷ niệm hoạt động sinh viên</h5>
-              <p class="card-text text-secondary">
-                Các hoạt động ngoại khóa mang lại nhiều trải nghiệm đáng nhớ và giúp tôi tự tin hơn.
-              </p>
+        <div class="col-sm-4">
+          <div class="panel panel-default text-left">
+            <div class="panel-heading"><strong>Kỷ niệm hoạt động sinh viên</strong></div>
+            <div class="panel-body">
+              Các hoạt động ngoại khóa mang lại nhiều trải nghiệm đáng nhớ và giúp tôi tự tin hơn.
             </div>
           </div>
         </div>
@@ -454,30 +382,30 @@
     </div>
   </section>
 
-  <!-- Liên hệ: form không cần backend -->
+  <!-- Liên hệ: form Bootstrap, không cần backend -->
   <section id="contact">
     <div class="container">
       <h2 class="section-title text-center">Liên hệ</h2>
 
-      <div class="row justify-content-center">
-        <div class="col-lg-7">
-          <form class="well-box p-4">
-            <div class="mb-3">
-              <label for="name" class="form-label">Tên</label>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <form class="well">
+            <div class="form-group">
+              <label for="name">Tên</label>
               <input type="text" class="form-control" id="name" placeholder="Nhập tên của bạn">
             </div>
 
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
+            <div class="form-group">
+              <label for="email">Email</label>
               <input type="email" class="form-control" id="email" placeholder="Nhập email của bạn">
             </div>
 
-            <div class="mb-3">
-              <label for="message" class="form-label">Nội dung</label>
+            <div class="form-group">
+              <label for="message">Nội dung</label>
               <textarea class="form-control" id="message" rows="5" placeholder="Nhập nội dung liên hệ"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-main w-100 py-2">Gửi liên hệ</button>
+            <button type="submit" class="btn btn-primary btn-block">Gửi liên hệ</button>
           </form>
         </div>
       </div>
@@ -486,10 +414,7 @@
 
   <!-- Footer -->
   <footer class="container-fluid text-center">
-    <p class="mb-0">© 2026 Lê Thị Tuyết Trinh. All rights reserved.</p>
+    <p>© 2026 Lê Thị Tuyết Trinh. All rights reserved.</p>
   </footer>
-
-  <!-- Bootstrap 5 JavaScript CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
